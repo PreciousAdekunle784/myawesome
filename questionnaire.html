@@ -688,7 +688,7 @@
 
             <div class="quiz-header">
                 <h1 class="quiz-title">Quick Assessment</h1>
-                <p class="quiz-subtitle">Help us personalize your experience (2 minutes)</p>
+                <p class="quiz-subtitle">Help us personalize your experience</p>
             </div>
 
             <!-- Question 1 -->
@@ -916,7 +916,7 @@
             const firstName = localStorage.getItem('userFirstName');
             if (firstName) {
                 document.querySelector('.quiz-subtitle').textContent = 
-                    `Help us personalize your experience, ${firstName}! (2 minutes)`;
+                    `Help us personalize your experience, ${firstName}!`;
             }
         });
     </script>

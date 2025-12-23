@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passive Income Playbook</title>
     <meta name="description" content="Build your $5K+ monthly income with proven real estate strategies. Join 2,800+ students learning passive income mastery.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -37,6 +38,21 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Global mobile touch fixes */
+        button, a, input[type="submit"], input[type="button"] {
+            -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        button:active, a:active {
+            transform: scale(0.98);
         }
 
         .animated-bg {
@@ -136,6 +152,71 @@
         .nav-buttons {
             display: flex;
             gap: 15px;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--primary);
+            padding: 20px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-menu-items .nav-btn {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
         }
 
         .nav-btn {
@@ -1563,62 +1644,85 @@
         /* Mobile Landscape & Small Tablets (481px - 768px) */
         @media (max-width: 768px) {
             .container {
-                padding: 100px 20px 60px;
+                padding: 80px 20px 60px;
+            }
+
+            .nav {
+                padding: 12px 0;
             }
 
             .nav-container {
-                padding: 0 20px;
-                flex-wrap: wrap;
-                gap: 10px;
+                padding: 0 15px;
+                flex-direction: row;
+                justify-content: space-between;
             }
 
             .logo {
-                font-size: 20px;
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
+                font-size: 18px;
             }
 
+            /* Hide desktop nav, show hamburger */
             .nav-buttons {
-                gap: 8px;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
+                display: none !important;
             }
 
-            .nav-btn {
-                padding: 8px 16px;
-                font-size: 12px;
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
             }
 
             .hero-title {
-                font-size: 36px;
+                font-size: 32px;
                 letter-spacing: -1px;
+                margin-bottom: 20px;
             }
 
             .hero-subtitle {
-                font-size: 16px;
+                font-size: 15px;
+                margin-bottom: 30px;
+            }
+
+            .badge {
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+
+            .video-beautiful {
+                margin: 40px auto;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
+                margin: 40px 0;
             }
 
             .feature-card {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
 
             .cta-button {
-                padding: 18px 40px;
+                padding: 18px 35px;
                 font-size: 16px;
                 width: 100%;
                 max-width: 100%;
                 justify-content: center;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
             }
 
             .email-card {
-                padding: 40px 25px;
+                padding: 35px 20px;
+            }
+
+            .email-title {
+                font-size: 28px;
             }
 
             .bonuses-list {
@@ -1626,9 +1730,35 @@
             }
 
             .bonus-item-beautiful {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 15px;
+                flex-direction: row;
+                text-align: left;
+                padding: 15px;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .bonus-icon-beautiful {
+                font-size: 28px;
+            }
+
+            .input-beautiful {
+                padding: 16px 18px;
+                font-size: 16px;
+                -webkit-appearance: none;
+            }
+
+            .verification-box {
+                padding: 18px 20px;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+                min-height: 52px;
+            }
+
+            .submit-beautiful {
+                padding: 18px;
+                font-size: 17px;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+                min-height: 52px;
             }
 
             .value-item {
@@ -1642,7 +1772,7 @@
             }
 
             .pricing-reveal {
-                padding: 40px 20px;
+                padding: 35px 20px;
             }
 
             .new-price {
@@ -1662,12 +1792,12 @@
             }
 
             .exit-popup-modal {
-                padding: 40px 30px;
+                padding: 35px 25px;
                 width: 95%;
             }
 
             .exit-popup-title {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .exit-popup-icon {
@@ -1676,7 +1806,8 @@
 
             .founder-container {
                 grid-template-columns: 1fr;
-                padding: 35px 25px;
+                padding: 30px 20px;
+                overflow: visible;
             }
 
             .founder-left {
@@ -1721,7 +1852,7 @@
             }
 
             .final-promise {
-                padding: 30px 25px;
+                padding: 30px 20px;
                 margin: 25px 0;
             }
 
@@ -1736,14 +1867,16 @@
             .cta-section {
                 padding: 30px 20px;
                 margin-top: 30px;
+                max-width: 100% !important;
+                -webkit-tap-highlight-color: transparent;
             }
 
             .section-title-about {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .section-subtitle-about {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .testimonial-box {
@@ -1753,93 +1886,126 @@
             .testimonial-quote-about {
                 font-size: 14px;
             }
+
+            /* Force all buttons to be clickable on mobile */
+            button, .cta-button, .submit-beautiful, .nav-btn {
+                position: relative;
+                z-index: 99999 !important;
+                pointer-events: auto !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3) !important;
+            }
+
+            /* Fix input and form elements */
+            input, textarea, select {
+                -webkit-appearance: none;
+                appearance: none;
+                font-size: 16px !important;
+            }
         }
 
         /* Mobile Portrait (320px - 480px) */
         @media (max-width: 480px) {
             .container {
-                padding: 90px 15px 40px;
+                padding: 75px 15px 40px;
             }
 
             .nav {
-                padding: 15px 0;
+                padding: 10px 0;
             }
 
             .nav-container {
-                padding: 0 15px;
+                padding: 0 12px;
             }
 
             .logo {
-                font-size: 18px;
-                margin-bottom: 8px;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .nav-buttons {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
             }
 
             .nav-btn {
-                padding: 6px 12px;
-                font-size: 11px;
+                padding: 8px 6px;
+                font-size: 10px;
+                border-radius: 15px;
             }
 
             .hero-title {
                 font-size: 28px;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
+                line-height: 1.2;
             }
 
             .hero-subtitle {
                 font-size: 14px;
-                margin-bottom: 30px;
+                margin-bottom: 25px;
             }
 
             .badge {
-                font-size: 11px;
-                padding: 6px 16px;
-                margin-bottom: 20px;
+                font-size: 10px;
+                padding: 6px 12px;
+                margin-bottom: 15px;
             }
 
             .video-beautiful {
-                margin: 40px auto;
+                margin: 30px auto;
             }
 
             .play-btn-beautiful {
-                width: 80px;
-                height: 80px;
-                font-size: 28px;
+                width: 70px;
+                height: 70px;
+                font-size: 24px;
             }
 
             .video-label {
-                font-size: 16px;
+                font-size: 14px;
+            }
+
+            .features-grid {
+                gap: 12px;
+                margin: 30px 0;
             }
 
             .feature-card {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .feature-icon {
-                font-size: 40px;
+                font-size: 36px;
+                margin-bottom: 12px;
             }
 
             .feature-title {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .feature-desc {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .cta-button {
                 padding: 16px 30px;
                 font-size: 15px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .email-card {
-                padding: 30px 20px;
+                padding: 30px 18px;
             }
 
             .email-title {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .email-description {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .step-indicator {
@@ -1848,13 +2014,31 @@
                 font-size: 24px;
             }
 
+            .bonus-item-beautiful {
+                padding: 14px;
+            }
+
+            .bonus-icon-beautiful {
+                font-size: 24px;
+            }
+
+            .bonus-name {
+                font-size: 14px;
+            }
+
+            .bonus-detail {
+                font-size: 12px;
+            }
+
             .input-beautiful {
-                padding: 16px 18px;
-                font-size: 15px;
+                padding: 16px;
+                font-size: 16px;
+                min-height: 52px;
             }
 
             .verification-box {
-                padding: 18px 20px;
+                padding: 16px 18px;
+                min-height: 52px;
             }
 
             .verification-text {
@@ -1864,14 +2048,15 @@
             .submit-beautiful {
                 padding: 16px;
                 font-size: 16px;
+                min-height: 52px;
             }
 
             .section-title {
-                font-size: 32px;
+                font-size: 30px;
             }
 
             .section-subtitle {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .value-item {
@@ -1883,7 +2068,7 @@
             }
 
             .value-description {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .value-icon-big {
@@ -1895,45 +2080,45 @@
             }
 
             .pricing-label {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .new-price {
-                font-size: 56px;
+                font-size: 52px;
             }
 
             .old-price {
-                font-size: 32px;
+                font-size: 30px;
             }
 
             .price-period {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .savings-badge {
-                font-size: 16px;
-                padding: 10px 25px;
+                font-size: 15px;
+                padding: 10px 20px;
             }
 
             .guarantee-seal {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
             }
 
             .seal-number {
-                font-size: 40px;
+                font-size: 36px;
             }
 
             .seal-text {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .guarantee-title {
-                font-size: 32px;
+                font-size: 30px;
             }
 
             .guarantee-text {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .checkout-card {
@@ -1941,27 +2126,27 @@
             }
 
             .checkout-title {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .countdown-beautiful {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .countdown-time {
-                font-size: 40px;
+                font-size: 38px;
             }
 
             .countdown-label-beautiful {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .testimonial-modern {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .testimonial-quote {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .exit-popup-modal {
@@ -1973,7 +2158,7 @@
             }
 
             .exit-popup-subtitle {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .exit-popup-icon {
@@ -1981,8 +2166,9 @@
             }
 
             .exit-btn-primary {
-                font-size: 18px;
-                padding: 20px 30px;
+                font-size: 16px;
+                padding: 18px 25px;
+                min-height: 52px;
             }
 
             .founder-container {
@@ -1990,19 +2176,19 @@
             }
 
             .section-title-about {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .section-subtitle-about {
-                font-size: 15px;
-            }
-
-            .hook-text {
                 font-size: 14px;
             }
 
+            .hook-text {
+                font-size: 13px;
+            }
+
             .image-caption {
-                font-size: 12px;
+                font-size: 11px;
                 padding: 10px;
             }
 
@@ -2011,11 +2197,11 @@
             }
 
             .stat-mini {
-                padding: 14px;
+                padding: 12px;
             }
 
             .stat-mini-number {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .stat-mini-label {
@@ -2035,11 +2221,11 @@
             }
 
             .callout-title {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .callout-text {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .breakthrough-moment {
@@ -2047,23 +2233,23 @@
             }
 
             .breakthrough-text {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .proof-title {
-                font-size: 18px;
+                font-size: 17px;
             }
 
             .proof-item-number {
-                font-size: 32px;
+                font-size: 30px;
             }
 
             .proof-item-label {
-                font-size: 11px;
+                font-size: 10px;
             }
 
             .testimonial-box {
-                padding: 18px;
+                padding: 16px;
             }
 
             .testimonial-quote-about {
@@ -2071,11 +2257,11 @@
             }
 
             .testimonial-author-about {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .final-promise {
-                padding: 25px 20px;
+                padding: 25px 18px;
             }
 
             .promise-title {
@@ -2083,19 +2269,34 @@
             }
 
             .promise-text {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .cta-headline {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .cta-subtext {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .urgency-text {
-                font-size: 12px;
+                font-size: 11px;
+            }
+
+            .orb {
+                display: none;
+            }
+
+            /* Force clickability on all interactive elements */
+            * {
+                -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
+            }
+
+            button, a, input, textarea, select, label, .option-card, .nav-btn, .cta-button {
+                -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3) !important;
+                touch-action: manipulation !important;
+                user-select: none;
             }
         }
 
@@ -2142,12 +2343,32 @@
     <nav class="nav" id="navbar">
         <div class="nav-container">
             <div class="logo">Passive Income Playbook</div>
+            
+            <!-- Desktop Navigation -->
             <div class="nav-buttons">
                 <button class="nav-btn active" onclick="goToStep(1)">Home</button>
                 <button class="nav-btn" onclick="goToStep(2)">About</button>
                 <button class="nav-btn" onclick="goToStep(3)">Features</button>
                 <button class="nav-btn" onclick="goToStep(4)">Get Started</button>
                 <button class="nav-btn" onclick="goToStep(5)">Join Now</button>
+            </div>
+            
+            <!-- Hamburger Menu (Mobile) -->
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-items">
+                <button class="nav-btn active" onclick="goToStep(1); closeMobileMenu();">Home</button>
+                <button class="nav-btn" onclick="goToStep(2); closeMobileMenu();">About</button>
+                <button class="nav-btn" onclick="goToStep(3); closeMobileMenu();">Features</button>
+                <button class="nav-btn" onclick="goToStep(4); closeMobileMenu();">Get Started</button>
+                <button class="nav-btn" onclick="goToStep(5); closeMobileMenu();">Join Now</button>
             </div>
         </div>
     </nav>
@@ -2162,7 +2383,7 @@
                 
                 <h1 class="hero-title">
                     Build Your Reliable
-                    <span class="hero-highlight">$100K+ Monthly Income</span>
+                    <span class="hero-highlight">$5K+ Monthly Income</span>
                     Starting Now
                 </h1>
 
@@ -2377,7 +2598,7 @@
                 <h4 class="cta-headline">Your Freedom Is Waiting</h4>
                 <p class="cta-subtext">Join 2,800+ students who said "yes" to their future</p>
                 <button class="cta-button" id="aboutCtaButton" onclick="nextStep(3); return false;">
-                    Yes! I'm Ready to Start
+                    Yes! I'm Ready to Start 
                 </button>
                 <p class="urgency-text">Only $37/month • Cancel Anytime • 30-Day Guarantee</p>
             </div>
@@ -2678,6 +2899,23 @@
     <script>
         let currentStep = 1;
 
+        // Hamburger Menu Functions
+        function toggleMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
         function playVideo() {
             const placeholder = document.getElementById('videoPlaceholder');
             const iframe = document.getElementById('videoIframe');
@@ -2700,8 +2938,19 @@
         }
 
         function updateNavButtons() {
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach((btn, index) => {
+            // Update desktop navigation
+            const desktopButtons = document.querySelectorAll('.nav-buttons .nav-btn');
+            desktopButtons.forEach((btn, index) => {
+                if (index + 1 === currentStep) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Update mobile navigation
+            const mobileButtons = document.querySelectorAll('.mobile-menu-items .nav-btn');
+            mobileButtons.forEach((btn, index) => {
                 if (index + 1 === currentStep) {
                     btn.classList.add('active');
                 } else {
@@ -2737,7 +2986,10 @@
             localStorage.setItem('userEmail', email);
             console.log('Lead captured:', { firstName, email });
             
-            window.location.href = 'questionnaire.html';
+            // Use full path with current domain
+            const currentDomain = window.location.origin;
+            const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            window.location.href = currentDomain + currentPath + 'questionnaire.html';
             return false;
         }
 
