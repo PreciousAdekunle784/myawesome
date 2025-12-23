@@ -327,17 +327,343 @@
             cursor: not-allowed;
         }
 
-        @media (max-width: 768px) {
+        .welcome-message {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* ========================================
+           RESPONSIVE BREAKPOINTS FOR ALL DEVICES
+        ======================================== */
+
+        /* Large Tablets & Small Laptops (1024px - 1200px) */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 80px 30px 60px;
+                max-width: 900px;
+            }
+
             .quiz-card {
-                padding: 40px 25px;
+                padding: 50px 40px;
+            }
+
+            .quiz-title {
+                font-size: 36px;
             }
 
             .question-title {
-                font-size: 20px;
+                font-size: 26px;
+            }
+        }
+
+        /* Tablets (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 70px 25px 50px;
+            }
+
+            .quiz-card {
+                padding: 45px 35px;
+            }
+
+            .quiz-title {
+                font-size: 32px;
+            }
+
+            .quiz-subtitle {
+                font-size: 16px;
+            }
+
+            .question-title {
+                font-size: 24px;
+            }
+
+            .option-card {
+                padding: 18px 20px;
+            }
+
+            .option-text {
+                font-size: 15px;
+            }
+
+            .navigation-buttons {
+                gap: 12px;
+            }
+
+            .nav-btn {
+                padding: 14px 30px;
+                font-size: 15px;
+            }
+        }
+
+        /* Mobile Landscape & Small Tablets (481px - 768px) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 20px 40px;
+            }
+
+            .quiz-card {
+                padding: 40px 25px;
+                border-radius: 20px;
+            }
+
+            .quiz-title {
+                font-size: 28px;
+            }
+
+            .quiz-subtitle {
+                font-size: 15px;
+            }
+
+            .progress-indicator {
+                margin-bottom: 35px;
+            }
+
+            .progress-step {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .question-title {
+                font-size: 22px;
+                margin-bottom: 25px;
+            }
+
+            .option-card {
+                padding: 16px 18px;
+                margin-bottom: 12px;
+            }
+
+            .option-text {
+                font-size: 14px;
+            }
+
+            .option-radio {
+                width: 22px;
+                height: 22px;
             }
 
             .navigation-buttons {
                 flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                padding: 16px;
+                font-size: 16px;
+                justify-content: center;
+            }
+
+            .back-btn {
+                order: 2;
+            }
+
+            .next-btn {
+                order: 1;
+            }
+        }
+
+        /* Mobile Portrait (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 50px 15px 30px;
+            }
+
+            .quiz-card {
+                padding: 30px 20px;
+                border-radius: 16px;
+            }
+
+            .quiz-header {
+                margin-bottom: 30px;
+            }
+
+            .quiz-title {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            .quiz-subtitle {
+                font-size: 14px;
+            }
+
+            .progress-indicator {
+                margin-bottom: 30px;
+                padding: 0 5px;
+            }
+
+            .progress-step {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .question-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+                line-height: 1.3;
+            }
+
+            .options-list {
+                gap: 10px;
+            }
+
+            .option-card {
+                padding: 14px 16px;
+                margin-bottom: 10px;
+            }
+
+            .option-text {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            .option-radio {
+                width: 20px;
+                height: 20px;
+            }
+
+            .option-radio::after {
+                width: 10px;
+                height: 10px;
+            }
+
+            .navigation-buttons {
+                gap: 10px;
+                margin-top: 25px;
+            }
+
+            .nav-btn {
+                padding: 14px;
+                font-size: 15px;
+            }
+
+            .orb {
+                display: none;
+            }
+        }
+
+        /* Extra Small Mobile (below 320px) */
+        @media (max-width: 320px) {
+            .container {
+                padding: 40px 12px 25px;
+            }
+
+            .quiz-card {
+                padding: 25px 15px;
+            }
+
+            .quiz-title {
+                font-size: 22px;
+            }
+
+            .quiz-subtitle {
+                font-size: 13px;
+            }
+
+            .progress-step {
+                width: 32px;
+                height: 32px;
+                font-size: 13px;
+            }
+
+            .question-title {
+                font-size: 18px;
+            }
+
+            .option-card {
+                padding: 12px 14px;
+            }
+
+            .option-text {
+                font-size: 12px;
+            }
+
+            .option-radio {
+                width: 18px;
+                height: 18px;
+            }
+
+            .nav-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+        /* Landscape Orientation Adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 30px 20px 20px;
+            }
+
+            .quiz-card {
+                padding: 25px 20px;
+            }
+
+            .quiz-header {
+                margin-bottom: 20px;
+            }
+
+            .quiz-title {
+                font-size: 22px;
+                margin-bottom: 5px;
+            }
+
+            .quiz-subtitle {
+                font-size: 13px;
+            }
+
+            .progress-indicator {
+                margin-bottom: 20px;
+            }
+
+            .progress-step {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+
+            .question-title {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .option-card {
+                padding: 10px 15px;
+                margin-bottom: 8px;
+            }
+
+            .option-text {
+                font-size: 13px;
+            }
+
+            .navigation-buttons {
+                margin-top: 20px;
+                gap: 8px;
+            }
+
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 14px;
             }
         }
     </style>
@@ -362,9 +688,10 @@
 
             <div class="quiz-header">
                 <h1 class="quiz-title">Quick Assessment</h1>
-                <p class="quiz-subtitle">Help us personalize your experience</p>
+                <p class="quiz-subtitle">Help us personalize your experience (2 minutes)</p>
             </div>
 
+            <!-- Question 1 -->
             <div class="question-container active" id="q1">
                 <h2 class="question-title">What's your current experience with real estate investing?</h2>
                 <div class="options-list">
@@ -387,6 +714,7 @@
                 </div>
             </div>
 
+            <!-- Question 2 -->
             <div class="question-container" id="q2">
                 <h2 class="question-title">What's your biggest challenge right now?</h2>
                 <div class="options-list">
@@ -409,6 +737,7 @@
                 </div>
             </div>
 
+            <!-- Question 3 -->
             <div class="question-container" id="q3">
                 <h2 class="question-title">What's your primary goal with passive income?</h2>
                 <div class="options-list">
@@ -431,6 +760,7 @@
                 </div>
             </div>
 
+            <!-- Question 4 -->
             <div class="question-container" id="q4">
                 <h2 class="question-title">How much time can you dedicate weekly?</h2>
                 <div class="options-list">
@@ -453,6 +783,7 @@
                 </div>
             </div>
 
+            <!-- Question 5 -->
             <div class="question-container" id="q5">
                 <h2 class="question-title">When do you want to close your first deal?</h2>
                 <div class="options-list">
@@ -491,71 +822,101 @@
         let answers = {};
 
         function selectOption(questionNum, answer) {
+            // Remove selected class from all options in current question
             const currentOptions = document.querySelectorAll(`#q${questionNum} .option-card`);
             currentOptions.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked option
             event.currentTarget.classList.add('selected');
+            
+            // Store answer
             answers[`q${questionNum}`] = answer;
+            
+            // Enable next button
             document.getElementById('nextBtn').disabled = false;
         }
 
         function nextQuestion() {
             if (!answers[`q${currentQuestion}`]) return;
             
+            // Hide current question
             document.getElementById(`q${currentQuestion}`).classList.remove('active');
+            
+            // Mark step as completed
             document.getElementById(`step${currentQuestion}`).classList.add('completed');
             document.getElementById(`step${currentQuestion}`).classList.remove('active');
             
+            // Move to next question
             currentQuestion++;
             
             if (currentQuestion <= 5) {
+                // Show next question
                 document.getElementById(`q${currentQuestion}`).classList.add('active');
                 document.getElementById(`step${currentQuestion}`).classList.add('active');
                 
+                // Update progress bar
                 const progress = ((currentQuestion - 1) / 4) * 100;
                 document.getElementById('progressFill').style.width = progress + '%';
                 
+                // Show back button
                 document.getElementById('backBtn').style.display = 'block';
+                
+                // Disable next button until option selected
                 document.getElementById('nextBtn').disabled = !answers[`q${currentQuestion}`];
                 
+                // Change button text on last question
                 if (currentQuestion === 5) {
                     document.getElementById('nextBtn').textContent = 'See My Results →';
                 }
             } else {
+                // Quiz completed - redirect to features page
                 completeQuiz();
             }
         }
 
         function previousQuestion() {
+            // Hide current question
             document.getElementById(`q${currentQuestion}`).classList.remove('active');
             document.getElementById(`step${currentQuestion}`).classList.remove('active');
             document.getElementById(`step${currentQuestion}`).classList.remove('completed');
             
+            // Move to previous question
             currentQuestion--;
             
+            // Show previous question
             document.getElementById(`q${currentQuestion}`).classList.add('active');
             document.getElementById(`step${currentQuestion}`).classList.add('active');
             
+            // Update progress bar
             const progress = ((currentQuestion - 1) / 4) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
             
+            // Hide back button on first question
             if (currentQuestion === 1) {
                 document.getElementById('backBtn').style.display = 'none';
             }
             
+            // Enable next button if answer exists
             document.getElementById('nextBtn').disabled = !answers[`q${currentQuestion}`];
+            
+            // Reset button text
             document.getElementById('nextBtn').textContent = 'Next →';
         }
 
         function completeQuiz() {
+            // Store answers in localStorage
             localStorage.setItem('quizAnswers', JSON.stringify(answers));
-            window.location.href = 'index.html#step3';
+            
+            // Redirect back to main funnel at step 3 (features)
+            window.location.href = 'index.html#step4';
         }
 
+        // Get user name from localStorage
         window.addEventListener('DOMContentLoaded', function() {
             const firstName = localStorage.getItem('userFirstName');
             if (firstName) {
                 document.querySelector('.quiz-subtitle').textContent = 
-                    `Help us personalize your experience, ${firstName}!`;
+                    `Help us personalize your experience, ${firstName}! (2 minutes)`;
             }
         });
     </script>
