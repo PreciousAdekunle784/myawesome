@@ -11,77 +11,87 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --secondary: #F59E0B;
-            --accent: #10B981;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --bg-dark: #0F172A;
-            --bg-card: #1E293B;
-            --text: #F1F5F9;
-            --text-muted: #94A3B8;
-            --white: #FFFFFF;
-        }
-
-        body {
-            font-family: 'Sora', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+:root {
+    --primary: #6366F1;
+    --primary-dark: #4F46E5;
+    --secondary: #F59E0B;
+    --accent: #10B981;
+    
+    /* PROFESSIONAL GRADIENTS - Subtle & Sophisticated */
+    --gradient-1: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    --gradient-2: linear-gradient(135deg, #374151 0%, #6b7280 100%);
+    --gradient-3: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    
+    /* PROFESSIONAL BACKGROUNDS - Deep Navy & Slate */
+    --bg-dark: #121b36;
+    --bg-card: #1a1f2e;
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --white: #FFFFFF;
+    --gold: #F59E0B;
+}
 
         .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            opacity: 0.1;
-            z-index: 0;
-            animation: gradientShift 15s ease infinite;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0a0e1a 0%, #1a1f2e 50%, #0f172a 100%);
+    z-index: 0;
+}
 
-        @keyframes gradientShift {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.1); }
-        }
+/* Subtle grid pattern overlay */
+.animated-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
 
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-            z-index: 1;
-            animation: float 20s ease-in-out infinite;
-        }
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.08;
+    z-index: 1;
+    animation: float 25s ease-in-out infinite;
+}
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--gradient-1);
-            top: 10%;
-            left: 10%;
-        }
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+    top: -10%;
+    left: -10%;
+}
 
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: var(--gradient-2);
-            bottom: 10%;
-            right: 10%;
-            animation-delay: -5s;
-        }
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    bottom: -5%;
+    right: -5%;
+    animation-delay: -8s;
+}
 
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    top: 40%;
+    right: 10%;
+    animation-delay: -15s;
+}
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(30px, -30px); }
@@ -327,343 +337,23 @@
             cursor: not-allowed;
         }
 
-        .welcome-message {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .welcome-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounce 1s ease infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .welcome-text {
-            font-size: 20px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        /* ========================================
-           RESPONSIVE BREAKPOINTS FOR ALL DEVICES
-        ======================================== */
-
-        /* Large Tablets & Small Laptops (1024px - 1200px) */
-        @media (max-width: 1200px) {
-            .container {
-                padding: 80px 30px 60px;
-                max-width: 900px;
-            }
-
-            .quiz-card {
-                padding: 50px 40px;
-            }
-
-            .quiz-title {
-                font-size: 36px;
-            }
-
-            .question-title {
-                font-size: 26px;
-            }
-        }
-
-        /* Tablets (768px - 1024px) */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 70px 25px 50px;
-            }
-
-            .quiz-card {
-                padding: 45px 35px;
-            }
-
-            .quiz-title {
-                font-size: 32px;
-            }
-
-            .quiz-subtitle {
-                font-size: 16px;
-            }
-
-            .question-title {
-                font-size: 24px;
-            }
-
-            .option-card {
-                padding: 18px 20px;
-            }
-
-            .option-text {
-                font-size: 15px;
-            }
-
-            .navigation-buttons {
-                gap: 12px;
-            }
-
-            .nav-btn {
-                padding: 14px 30px;
-                font-size: 15px;
-            }
-        }
-
-        /* Mobile Landscape & Small Tablets (481px - 768px) */
         @media (max-width: 768px) {
-            .container {
-                padding: 60px 20px 40px;
-            }
-
             .quiz-card {
                 padding: 40px 25px;
-                border-radius: 20px;
-            }
-
-            .quiz-title {
-                font-size: 28px;
-            }
-
-            .quiz-subtitle {
-                font-size: 15px;
-            }
-
-            .progress-indicator {
-                margin-bottom: 35px;
-            }
-
-            .progress-step {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .question-title {
-                font-size: 22px;
-                margin-bottom: 25px;
-            }
-
-            .option-card {
-                padding: 16px 18px;
-                margin-bottom: 12px;
-            }
-
-            .option-text {
-                font-size: 14px;
-            }
-
-            .option-radio {
-                width: 22px;
-                height: 22px;
             }
 
             .navigation-buttons {
                 flex-direction: column;
-                gap: 10px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                padding: 16px;
-                font-size: 16px;
-                justify-content: center;
-            }
-
-            .back-btn {
-                order: 2;
-            }
-
-            .next-btn {
-                order: 1;
             }
         }
 
-        /* Mobile Portrait (320px - 480px) */
         @media (max-width: 480px) {
-            .container {
-                padding: 50px 15px 30px;
-            }
-
             .quiz-card {
                 padding: 30px 20px;
-                border-radius: 16px;
-            }
-
-            .quiz-header {
-                margin-bottom: 30px;
-            }
-
-            .quiz-title {
-                font-size: 24px;
-                margin-bottom: 8px;
-            }
-
-            .quiz-subtitle {
-                font-size: 14px;
-            }
-
-            .progress-indicator {
-                margin-bottom: 30px;
-                padding: 0 5px;
-            }
-
-            .progress-step {
-                width: 36px;
-                height: 36px;
-                font-size: 14px;
-            }
-
-            .question-title {
-                font-size: 20px;
-                margin-bottom: 20px;
-                line-height: 1.3;
-            }
-
-            .options-list {
-                gap: 10px;
             }
 
             .option-card {
                 padding: 14px 16px;
-                margin-bottom: 10px;
-            }
-
-            .option-text {
-                font-size: 13px;
-                line-height: 1.4;
-            }
-
-            .option-radio {
-                width: 20px;
-                height: 20px;
-            }
-
-            .option-radio::after {
-                width: 10px;
-                height: 10px;
-            }
-
-            .navigation-buttons {
-                gap: 10px;
-                margin-top: 25px;
-            }
-
-            .nav-btn {
-                padding: 14px;
-                font-size: 15px;
-            }
-
-            .orb {
-                display: none;
-            }
-        }
-
-        /* Extra Small Mobile (below 320px) */
-        @media (max-width: 320px) {
-            .container {
-                padding: 40px 12px 25px;
-            }
-
-            .quiz-card {
-                padding: 25px 15px;
-            }
-
-            .quiz-title {
-                font-size: 22px;
-            }
-
-            .quiz-subtitle {
-                font-size: 13px;
-            }
-
-            .progress-step {
-                width: 32px;
-                height: 32px;
-                font-size: 13px;
-            }
-
-            .question-title {
-                font-size: 18px;
-            }
-
-            .option-card {
-                padding: 12px 14px;
-            }
-
-            .option-text {
-                font-size: 12px;
-            }
-
-            .option-radio {
-                width: 18px;
-                height: 18px;
-            }
-
-            .nav-btn {
-                padding: 12px;
-                font-size: 14px;
-            }
-        }
-
-        /* Landscape Orientation Adjustments */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .container {
-                padding: 30px 20px 20px;
-            }
-
-            .quiz-card {
-                padding: 25px 20px;
-            }
-
-            .quiz-header {
-                margin-bottom: 20px;
-            }
-
-            .quiz-title {
-                font-size: 22px;
-                margin-bottom: 5px;
-            }
-
-            .quiz-subtitle {
-                font-size: 13px;
-            }
-
-            .progress-indicator {
-                margin-bottom: 20px;
-            }
-
-            .progress-step {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
-            }
-
-            .question-title {
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-
-            .option-card {
-                padding: 10px 15px;
-                margin-bottom: 8px;
-            }
-
-            .option-text {
-                font-size: 13px;
-            }
-
-            .navigation-buttons {
-                margin-top: 20px;
-                gap: 8px;
-            }
-
-            .nav-btn {
-                padding: 10px 20px;
-                font-size: 14px;
             }
         }
     </style>
@@ -818,100 +508,107 @@
     </div>
 
     <script>
+        // ===== BACKEND INTEGRATION =====
+        const API_URL = 'http://localhost:3000/api';
+        
         let currentQuestion = 1;
         let answers = {};
 
         function selectOption(questionNum, answer) {
-            // Remove selected class from all options in current question
             const currentOptions = document.querySelectorAll(`#q${questionNum} .option-card`);
             currentOptions.forEach(option => option.classList.remove('selected'));
             
-            // Add selected class to clicked option
             event.currentTarget.classList.add('selected');
-            
-            // Store answer
             answers[`q${questionNum}`] = answer;
-            
-            // Enable next button
             document.getElementById('nextBtn').disabled = false;
         }
 
         function nextQuestion() {
             if (!answers[`q${currentQuestion}`]) return;
             
-            // Hide current question
             document.getElementById(`q${currentQuestion}`).classList.remove('active');
-            
-            // Mark step as completed
             document.getElementById(`step${currentQuestion}`).classList.add('completed');
             document.getElementById(`step${currentQuestion}`).classList.remove('active');
             
-            // Move to next question
             currentQuestion++;
             
             if (currentQuestion <= 5) {
-                // Show next question
                 document.getElementById(`q${currentQuestion}`).classList.add('active');
                 document.getElementById(`step${currentQuestion}`).classList.add('active');
                 
-                // Update progress bar
                 const progress = ((currentQuestion - 1) / 4) * 100;
                 document.getElementById('progressFill').style.width = progress + '%';
                 
-                // Show back button
                 document.getElementById('backBtn').style.display = 'block';
-                
-                // Disable next button until option selected
                 document.getElementById('nextBtn').disabled = !answers[`q${currentQuestion}`];
                 
-                // Change button text on last question
                 if (currentQuestion === 5) {
                     document.getElementById('nextBtn').textContent = 'See My Results →';
                 }
             } else {
-                // Quiz completed - redirect to features page
                 completeQuiz();
             }
         }
 
         function previousQuestion() {
-            // Hide current question
             document.getElementById(`q${currentQuestion}`).classList.remove('active');
             document.getElementById(`step${currentQuestion}`).classList.remove('active');
             document.getElementById(`step${currentQuestion}`).classList.remove('completed');
             
-            // Move to previous question
             currentQuestion--;
             
-            // Show previous question
             document.getElementById(`q${currentQuestion}`).classList.add('active');
             document.getElementById(`step${currentQuestion}`).classList.add('active');
             
-            // Update progress bar
             const progress = ((currentQuestion - 1) / 4) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
             
-            // Hide back button on first question
             if (currentQuestion === 1) {
                 document.getElementById('backBtn').style.display = 'none';
             }
             
-            // Enable next button if answer exists
             document.getElementById('nextBtn').disabled = !answers[`q${currentQuestion}`];
-            
-            // Reset button text
             document.getElementById('nextBtn').textContent = 'Next →';
         }
 
-        function completeQuiz() {
-            // Store answers in localStorage
+        // ===== SUBMIT TO BACKEND DATABASE =====
+        async function completeQuiz() {
+            const firstName = localStorage.getItem('userFirstName') || 'Unknown';
+            const email = localStorage.getItem('userEmail') || 'no-email@example.com';
+            
             localStorage.setItem('quizAnswers', JSON.stringify(answers));
             
-            // Redirect back to main funnel at step 3 (features)
+            const submissionData = {
+                firstName: firstName,
+                email: email,
+                question1: answers.q1 || '',
+                question2: answers.q2 || '',
+                question3: answers.q3 || '',
+                question4: answers.q4 || '',
+                question5: answers.q5 || ''
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/submit-questionnaire`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(submissionData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    console.log('✅ Response saved to database! ID:', data.responseId);
+                }
+            } catch (error) {
+                console.error('❌ Backend connection error:', error);
+            }
+            
             window.location.href = 'index.html#step4';
         }
 
-        // Get user name from localStorage
         window.addEventListener('DOMContentLoaded', function() {
             const firstName = localStorage.getItem('userFirstName');
             if (firstName) {
